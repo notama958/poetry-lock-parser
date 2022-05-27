@@ -19,11 +19,11 @@ Poetry lock parser
 ### Frontend
 
 - ReactJS
-- [component diagram](./client/README.md)
+- [component diagram](./frontend/README.md)
 
 ### Deployment
 
-- heroku
+- [heroku](https://poetry-lock-parser.herokuapp.com/)
 
 ### Setup
 
