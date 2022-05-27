@@ -7,11 +7,7 @@ export const postFile = async (formData) => {
         'Content-Type': 'multipart/form-data',
       },
     };
-    const res = await axios.post(
-      `${process.env.REACT_APP_SERVER_API}/api/v1/upload`,
-      formData,
-      config
-    );
+    const res = await axios.post(`/api/v1/upload`, formData, config);
     return res.data;
   } catch (err) {
     console.log(err);
@@ -24,9 +20,7 @@ export const getPackage = async (packageName) => {
     if (packageName) {
       keyword = packageName;
     }
-    const res = await axios.get(
-      `${process.env.REACT_APP_SERVER_API}/api/v1/package?search=${keyword}`
-    );
+    const res = await axios.get(`/api/v1/package?search=${keyword}`);
     return res.data;
   } catch (err) {
     return err.response.data;
