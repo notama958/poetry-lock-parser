@@ -27,14 +27,6 @@ Poetry lock parser
 
 ### Setup
 
-> create .env in <b> client/ </b> with the contain as following
-
-```
-    REACT_APP_SERVER_API=http://localhost:5000
-    # you can set your server port at root/server.js
-
-```
-
 > install dependencies
 
 ```

@@ -40,7 +40,7 @@ const Package = ({ pkg }) => {
       </div>
       {/* optional dependencies of package */}
       <div className="package__ext">
-        <h3>optional(s)</h3>
+        <h3>optionals</h3>
         {exts
           ? exts
               .sort((a, b) => Object.keys(a)[0] > Object.keys(b)[0])

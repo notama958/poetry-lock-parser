@@ -302,10 +302,12 @@ nav #logo img {
   -webkit-animation: spin1 1s infinite linear;
 }
 @media only screen and (min-width: 300px) and (max-width: 400px) {
-  body {
+  .App {
       font-size: 10px;
 
   }
-
+  .btn{
+    font-size: 12px;
+  }
 
 }
