@@ -5,7 +5,6 @@
 ### Used Modules
 
 - axios
-- proxy
 - react-router-dom
 
 ### Run in local

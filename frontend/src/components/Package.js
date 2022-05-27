@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 // this component renders one package information
 const Package = ({ pkg }) => {
+  console.log(pkg);
   const { name, description, re_dep, dependencies, exts } = pkg; // extract props from passed object
   return (
     <div className="package">
@@ -20,11 +21,26 @@ const Package = ({ pkg }) => {
       <div className="package__dep">
         <h3>dependencies</h3>
         {dependencies
-          ? dependencies.sort().map((e, id) => (
-              <li key={id}>
-                <Link to={`/package/${e}`}>{e}</Link>
-              </li>
-            ))
+          ? dependencies
+              .sort((a, b) => Object.keys(a)[0] > Object.keys(b)[0])
+              .map((e, id) => {
+                console.log(e);
+                const key = Object.keys(e)[0];
+                const value = Object.values(e)[0];
+                if (value) {
+                  return (
+                    <li key={id} className={`${value ? 'clickable' : ''}`}>
+                      <Link to={`/package/${key}`}>{key}</Link>
+                    </li>
+                  );
+                } else {
+                  return (
+                    <li key={id} className={`${value ? 'clickable' : ''}`}>
+                      {key}
+                    </li>
+                  );
+                }
+              })
           : '<N/A>'}
       </div>
       {/* reverse dependencies of package */}

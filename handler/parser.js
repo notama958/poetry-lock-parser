@@ -147,15 +147,31 @@ const loadFile = (filePath) => {
             // update the new reversed dependencies list
             pkgs[key].re_dep = map_re_dep.get(key);
             if (pkgs[key].exts) {
-              let newObj = [];
+              let newExts = [];
               // update new optional dependecies
               pkgs[key].exts.forEach((p) => {
                 const obj = new Object();
-                obj[p] = map_pack.get(p);
-                newObj.push(obj);
+                obj[p] = map_pack.get(p); // return true/false
+                newExts.push(obj);
               });
-              pkgs[key].exts = newObj;
+              pkgs[key].exts = newExts;
             }
+            if (pkgs[key].dependencies) {
+              // update new dependencies
+              let newDeps = [];
+              pkgs[key].dependencies.forEach((p) => {
+                const obj = new Object();
+                // check existence of dependencies
+                if (map_pack.has(p)) {
+                  obj[p] = map_pack.get(p); // return true/false
+                } else {
+                  obj[p] = false;
+                }
+                newDeps.push(obj);
+              });
+              pkgs[key].dependencies = newDeps;
+            }
+            console.log(pkgs);
           }
           if (Object.keys(pkgs).length === 0) reject('Format invalid');
           resolve(pkgs);

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getPackage } from '../action/actions';
 import NavBar from './NavBar';
 import Package from './Package';
+import { Navigate } from 'react-router-dom';
 
 // this component render the package page
 const PackagePage = () => {
@@ -18,7 +19,9 @@ const PackagePage = () => {
     // fetch package information based on changing path (package name)
     async function fetchData() {
       const res = await getPackage(path);
-      setPackage(res.pkgs);
+      if (res.msg) {
+        <Navigate to="/" />;
+      } else setPackage(res.pkgs);
     }
     fetchData();
   }, [path, setPath]);
